@@ -8,7 +8,7 @@ namespace Day4
 {
     public class SectionAssignments(string filename)
     {
-        public int Process()
+        public int Process(bool partialOverlaps = false)
         {
             var lines = File.ReadAllLines(filename);
 
@@ -23,11 +23,23 @@ namespace Day4
                     throw new Exception("Unexpected number of parts");
                 }
 
-                if ((parts[0] <= parts[2] && parts[1] >= parts[3]) ||
-                    (parts[0] >= parts[2] && parts[1] <= parts[3]))
+                if (partialOverlaps)
                 {
-                    Console.WriteLine($"Found overlap: {line}");
-                    overlaps++;
+                    if ((parts[0] <= parts[2] && parts[1] >= parts[2]) ||
+                                               (parts[0] >= parts[2] && parts[0] <= parts[3]))
+                    {
+                        Console.WriteLine($"Found partial overlap: {line}");
+                        overlaps++;
+                    }
+                }
+                else
+                {
+                    if ((parts[0] <= parts[2] && parts[1] >= parts[3]) ||
+                    (parts[0] >= parts[2] && parts[1] <= parts[3]))
+                    {
+                        Console.WriteLine($"Found overlap: {line}");
+                        overlaps++;
+                    }
                 }
 
             }

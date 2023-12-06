@@ -28,5 +28,23 @@ namespace Day4.Tests
 
             Assert.AreEqual(498, result);
         }
+
+        [TestMethod()]
+        public void ProcessTestPartials()
+        {
+            var assignments = new SectionAssignments("Day4TestInput.txt");
+            var result = assignments.Process(true);
+
+            Assert.AreEqual(4, result);
+        }
+
+        [TestMethod()]
+        public void ProcessTestPartialsFullData()
+        {
+            var assignments = new SectionAssignments("Day4Input.txt");
+            var result = assignments.Process(true);
+
+            Assert.AreEqual(859, result);
+        }
     }
 }
