@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day8
 {
-    internal class TreeGrid(string fileName)
+    public class TreeGrid(string fileName)
     {
         private readonly (int dx, int dy)[] directions = [(-1, 0), (0, -1), (1, 0), (0, 1)];
 
