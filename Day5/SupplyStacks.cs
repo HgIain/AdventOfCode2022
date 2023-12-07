@@ -36,7 +36,7 @@ namespace Day5
                 stacks.Add(i + 1, new Stack<char>());
             }
 
-            for(index = index -2;index>=0 ; index--)
+            for(index -= 2;index>=0 ; index--)
             {
                 string line = lines[index];
 
@@ -47,7 +47,7 @@ namespace Day5
                     throw new Exception("Unexpected line");
                 }
 
-                foreach(Match match in result)
+                foreach(Match match in result.Cast<Match>())
                 {
                     if (match.Groups[1].Length != 1)
                     {
