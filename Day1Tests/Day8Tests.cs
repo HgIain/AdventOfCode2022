@@ -25,5 +25,21 @@ namespace Day8.Tests
             var result = treeGrid.Process();
             Assert.AreEqual(1792, result);
         }
+
+        [TestMethod()]
+        public void ProcessBestScore()
+        {
+            var treeGrid = new TreeGrid("Day8TestInput.txt");
+            var result = treeGrid.Process(true);
+            Assert.AreEqual(8, result);
+        }
+
+        [TestMethod()]
+        public void ProcessBestScoreFullData()
+        {
+            var treeGrid = new TreeGrid("Day8Input.txt");
+            var result = treeGrid.Process(true);
+            Assert.AreEqual(334880, result);
+        }
     }
 }
