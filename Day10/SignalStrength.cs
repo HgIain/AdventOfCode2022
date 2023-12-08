@@ -83,5 +83,60 @@ namespace Day10
             return total;
         }
 
+        public int ProcessPixels()
+        {
+            var input = System.IO.File.ReadAllLines(filename);
+
+            string pixels = "";
+
+            foreach (var line in input)
+            {
+                if (Math.Abs((cycles%40) - registerX) < 2)
+                {
+                    pixels += '#';
+                }
+                else
+                {
+                    pixels += '.';
+                }
+                cycles++;
+
+                if (line == "noop")
+                {
+                    continue;
+                }
+
+                if (Math.Abs((cycles % 40) - registerX) < 2)
+                {
+                    pixels += '#';
+                }
+                else
+                {
+                    pixels += '.';
+                }
+                cycles++;
+
+                var parts = line.Split(' ');
+
+                if (parts.Length != 2)
+                {
+                    throw new Exception("Unexpected line");
+                }
+
+                var registerChange = int.Parse(parts[1]);
+                registerX += registerChange;
+            }
+
+            for(int i = 0; i < 6; i++)
+            {
+                int start = i * 40;
+                int end = (i + 1) * 40;
+                Console.WriteLine(pixels[start..end]);
+            }
+
+
+            return total;
+        }
+
     }
 }
